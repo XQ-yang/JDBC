@@ -20,7 +20,7 @@ public class UserDao {
         Connection conn = db.getConn();
         PreparedStatement pstm;
         //sql语言
-        String sql_insert = "insert into users values(?,?)";
+        String sql_insert = "insert into [user] values(?,?)";
         pstm = conn.prepareStatement(sql_insert);
 
         //填充sql语句中的？
@@ -44,7 +44,7 @@ public class UserDao {
     public void updateUser(int id, User user) throws Exception {
         Connection conn = db.getConn();
         PreparedStatement pstm;
-        String sql_update = "update users set password=? where id=?";
+        String sql_update = "update [user] set password=? where id=?";
         pstm = conn.prepareStatement(sql_update);
 
 //        pstm.setString(1,user.getUsername());     //运行报错说与mysql关键字相同，故不修改用户名
@@ -66,7 +66,7 @@ public class UserDao {
     public void deleteUser(int id) throws Exception {
         Connection conn = db.getConn();
         PreparedStatement pstm;
-        String sql_delete = "delete from users where id=?";
+        String sql_delete = "delete from [user] where id=?";
         pstm = conn.prepareStatement(sql_delete);
 
         pstm.setInt(1, id);
@@ -88,7 +88,7 @@ public class UserDao {
         PreparedStatement pstm;
         ResultSet res;
 
-        String sql_find = "select * from users ";
+        String sql_find = "select * from [user] ";
 
         pstm = conn.prepareStatement(sql_find);
 
@@ -112,7 +112,7 @@ public class UserDao {
         PreparedStatement pstm;
         ResultSet res;
 
-        String sql_find = "select * from users where id = ?";
+        String sql_find = "select * from [user] where id = ?";
 
         pstm = conn.prepareStatement(sql_find);
 
@@ -138,7 +138,7 @@ public class UserDao {
         PreparedStatement pstm;
         ResultSet res;
 
-        String sql_count = "select count(*) from users";
+        String sql_count = "select count(*) from [user]";
 
         pstm = conn.prepareStatement(sql_count);
         res = pstm.executeQuery();
